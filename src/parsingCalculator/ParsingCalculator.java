@@ -47,9 +47,9 @@ class ParsingCalculator
         try
         {
             Expression expression = ExpressionReader.evaluate(line);
-        
+            
             double result = Evaluator.evaluate(expression);
-        
+            
             System.out.println(result);
         }
         catch (Exception exception)
