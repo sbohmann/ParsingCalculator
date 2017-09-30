@@ -38,18 +38,23 @@ class ParsingCalculator
                 break;
             }
             
-            try
-            {
-                Expression expression = ExpressionReader.evaluate(line);
+            processLine(line);
+        }
+    }
     
-                double result = Evaluator.evaluate(expression);
-    
-                System.out.println(result);
-            }
-            catch (Exception exception)
-            {
-                exception.printStackTrace();
-            }
+    private void processLine(String line)
+    {
+        try
+        {
+            Expression expression = ExpressionReader.evaluate(line);
+        
+            double result = Evaluator.evaluate(expression);
+        
+            System.out.println(result);
+        }
+        catch (Exception exception)
+        {
+            exception.printStackTrace();
         }
     }
 }
