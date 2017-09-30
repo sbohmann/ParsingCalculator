@@ -19,7 +19,7 @@ class ExpressionReader
         this.evaluatingSubExpression = evaluatingSubExpression;
     }
     
-    static Expression evaluate(String line)
+    static Expression readExpression(String line)
     {
         List<Token> tokens = Tokenizer.readTokens(line);
         Queue<Token> queue = new LinkedList<>(tokens);

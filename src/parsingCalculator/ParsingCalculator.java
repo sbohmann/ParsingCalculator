@@ -46,7 +46,7 @@ class ParsingCalculator
     {
         try
         {
-            Expression expression = ExpressionReader.evaluate(line);
+            Expression expression = ExpressionReader.readExpression(line);
             
             double result = Evaluator.evaluate(expression);
             
