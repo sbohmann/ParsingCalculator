@@ -62,7 +62,7 @@ class Tokenizer
         
         if (matcher.lookingAt())
         {
-            offset = matcher.end();
+            offset += matcher.end();
         }
     }
     
