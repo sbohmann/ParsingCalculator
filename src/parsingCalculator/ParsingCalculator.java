@@ -44,6 +44,18 @@ class ParsingCalculator
     
     private void processLine(String line)
     {
+        if (line.trim().isEmpty())
+        {
+            System.out.println("Nothing");
+        }
+        else
+        {
+            evaluateLine(line);
+        }
+    }
+    
+    private void evaluateLine(String line)
+    {
         try
         {
             Expression expression = ExpressionReader.readExpression(line);
