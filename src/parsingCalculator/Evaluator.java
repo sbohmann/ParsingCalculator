@@ -8,6 +8,13 @@ class Evaluator
 {
     static double evaluate(Expression expression)
     {
+        List<Operation> additiveOperations = reduceExpressionToAdditiveOperations(expression);
+        
+        return evaluateAdditiveOperationChain(additiveOperations);
+    }
+    
+    private static List<Operation> reduceExpressionToAdditiveOperations(Expression expression)
+    {
         List<Operation> additiveOperations = new ArrayList<>();
         
         Operation lastAdditiveOperation = new Operation(Operator.Addition, expression.initialValue);
@@ -27,7 +34,7 @@ class Evaluator
         
         additiveOperations.add(lastAdditiveOperation);
         
-        return evaluateAdditiveOperationChain(additiveOperations);
+        return additiveOperations;
     }
     
     private static Operation applyMultiplicativeToAdditiveOperation(Operation multiplicativeOperation, Operation additiveOperation)
