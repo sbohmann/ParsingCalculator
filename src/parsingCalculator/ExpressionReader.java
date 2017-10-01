@@ -74,9 +74,9 @@ class ExpressionReader
     
     private void evaluateSubExpression()
     {
-        ExpressionReader subExpressionEvaluator = new ExpressionReader(queue, true);
+        ExpressionReader subExpressionReader = new ExpressionReader(queue, true);
         
-        Expression subExpression = subExpressionEvaluator.readExpression();
+        Expression subExpression = subExpressionReader.readExpression();
         
         double subExpressionResult = Evaluator.evaluate(subExpression);
         
