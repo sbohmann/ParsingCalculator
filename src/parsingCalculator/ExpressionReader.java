@@ -11,7 +11,7 @@ class ExpressionReader
     private final boolean evaluatingSubExpression;
     
     private final ExpressionBuilder result = new ExpressionBuilder();
-    private boolean foundEndOfExpression;
+    private boolean foundClosingBracket;
     
     private ExpressionReader(Queue<Token> queue, boolean evaluatingSubExpression)
     {
@@ -31,7 +31,7 @@ class ExpressionReader
     
     private Expression readExpression()
     {
-        while (!foundEndOfExpression)
+        while (!foundClosingBracket)
         {
             Token token = queue.poll();
             
@@ -59,7 +59,7 @@ class ExpressionReader
                 break;
             case ClosingBracket:
                 checkLevelForClosingBracket(token.index);
-                foundEndOfExpression = true;
+                foundClosingBracket = true;
                 break;
             case Operator:
                 handleOperator(Operator.forString(token.text));
