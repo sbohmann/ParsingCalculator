@@ -15,6 +15,12 @@ class ExpressionBuilder
     
     void addValue(double value)
     {
+        if (negateNextValue)
+        {
+            value = -value;
+            negateNextValue = false;
+        }
+        
         if (!initialValueWasSet)
         {
             initialValue = value;
@@ -33,11 +39,6 @@ class ExpressionBuilder
     
     private Operation createOperation(double value)
     {
-        if (negateNextValue)
-        {
-            value = -value;
-        }
-        
         return new Operation(currentOperator, value);
     }
     

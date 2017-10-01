@@ -9,15 +9,31 @@ import java.util.Map;
 public class ParsingAndEvaluationTest
 {
     @Test
-    public void singleValues()
+    public void singleValue()
     {
-        Map<String, Double> resultForInput = Map.of("0", 0.0, "0.0", 0.0);
+        Map<String, Double> resultForInput = Map.of(
+            "0", 0.0,
+            "0.0", 0.0);
         
         process(resultForInput, 0.0);
     }
     
     @Test
-    public void brokenDivisions()
+    public void addition()
+    {
+        Map<String, Double> resultForInput = Map.of(
+            "0 + 1", 1.0,
+            "0.25 + 1.75", 2.0,
+            "0.2 + 1.0", 1.2,
+            "0.3 + 1000.0", 1000.3,
+            "0.3 + - 1000.0", -999.7,
+            "- 0.3 + 1000.0", 999.7);
+        
+        process(resultForInput, 1e-20);
+    }
+    
+    @Test
+    public void brokenDivision()
     {
         Map<String, Double> resultForInput = Map.of(
             "1/-0", Double.NEGATIVE_INFINITY,
