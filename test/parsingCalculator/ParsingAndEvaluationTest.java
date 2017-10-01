@@ -33,6 +33,20 @@ public class ParsingAndEvaluationTest
     }
     
     @Test
+    public void multiplication()
+    {
+        Map<String, Double> resultForInput = Map.of(
+            "0 * 1", 0.0,
+            "0.25 * 1.75", 7.0/16.0,
+            "0.2 * 1.0", 0.2,
+            "0.3 * 1000.0", 300.0,
+            "0.3 * - 1000.0", -300.0,
+            "- 0.3 * 1000.0", -300.0);
+        
+        process(resultForInput, 1e-20);
+    }
+    
+    @Test
     public void brokenDivision()
     {
         Map<String, Double> resultForInput = Map.of(
